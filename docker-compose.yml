@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  mysql:
+    build:
+      context: ./database
+      dockerfile: Dockerfile
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: docker-web-example
+    networks:
+      - app-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: springboot-server
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: nginx-client
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+jwt:
+  access-secret: ${jwt.access-secret}
+  refresh-secret: ${jwt.refresh-secret}
