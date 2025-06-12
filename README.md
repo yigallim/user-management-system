@@ -45,10 +45,10 @@
 ### Backend
 
 - 🌱 Spring Boot 3.4.x
-- 🛠️ MyBatis Plus + JSQLParser
+- 🛠️ MyBatis Plus
 - 🐬 MySQL 8.4
 - 🔑 JWT (Access & Refresh tokens)
-- ⚙️ Lombok, Fastjson2, DevTools
+- ⚙️ Lombok, Fastjson2
 
 ---
 
